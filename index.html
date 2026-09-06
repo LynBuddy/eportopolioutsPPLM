@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Portofolio Praktik Mengajar Mandiri Siklus 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --lilac-primary: #C8A2C8;
-            --lilac-light: #E6D7E6;
-            --lilac-soft: #F3EBF3;
-            --lilac-dark: #8E5B8E;
+            --lilac-light: #F3E8F3;
+            --lilac-dark: #8E4585;
+            --lilac-accent: #DA70D6;
             --pearl-bg: #FAFAFA;
             --pearl-card: #FFFFFF;
-            --black-accent: #111111;
-            --black-soft: #222222;
-            --text-muted: #555555;
-            --border-color: #E2D8E2;
-            --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 15px 35px rgba(200, 162, 200, 0.2);
+            --pearl-border: #E8E2E8;
+            --black-rich: #121212;
+            --black-soft: #242424;
+            --text-muted: #666666;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --shadow-soft: 0 10px 30px rgba(18, 18, 18, 0.05);
+            --shadow-hover: 0 20px 40px rgba(142, 69, 133, 0.12);
         }
 
         * {
@@ -38,275 +39,249 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .brand-logo {
-            font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
-        }
-
-        /* Container Layout */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 25px;
-        }
-
-        /* Navigation */
-        nav {
+        /* --- Header / Navigation --- */
+        header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(250, 250, 250, 0.92);
+            background: rgba(250, 250, 250, 0.9);
             backdrop-filter: blur(12px);
             z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
+            border-bottom: 1px solid var(--pearl-border);
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
         }
 
-        .brand-logo {
+        .logo {
+            font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
             font-weight: 700;
-            color: var(--black-accent);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            color: var(--black-rich);
+            letter-spacing: 0.5px;
         }
 
-        .brand-logo span {
+        .logo span {
             color: var(--lilac-dark);
         }
 
-        .nav-links {
+        nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 2rem;
         }
 
-        .nav-links a {
+        nav a {
             text-decoration: none;
             color: var(--black-soft);
             font-weight: 500;
             font-size: 0.95rem;
             transition: color 0.3s ease;
-            position: relative;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--lilac-dark);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
+        nav a:hover {
             color: var(--lilac-dark);
         }
 
-        /* Hero / Profile Section */
-        #hero {
-            padding: 140px 0 80px;
-            background: linear-gradient(135deg, var(--pearl-bg) 0%, var(--lilac-soft) 100%);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        /* Unique Hexagon Shape for Profile Picture */
-        .profile-wrapper {
-            position: relative;
-            width: 280px;
-            height: 310px;
+        /* --- Hero / Profile Section --- */
+        .hero {
+            padding: 9rem 5% 5rem;
+            max-width: 1200px;
             margin: 0 auto;
-            filter: drop-shadow(0 15px 20px rgba(142, 91, 142, 0.25));
-        }
-
-        .profile-frame {
-            width: 100%;
-            height: 100%;
-            background: var(--black-accent);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 320px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: var(--lilac-light);
+            color: var(--lilac-dark);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            border: 1px solid rgba(142, 69, 133, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--black-rich);
+            line-height: 1.2;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero-content h2 {
+            font-size: 1.25rem;
+            color: var(--lilac-dark);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .identity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.8rem;
+            padding: 1.2rem;
+            background: var(--pearl-card);
+            border-radius: 16px;
+            border: 1px solid var(--pearl-border);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .identity-item {
+            font-size: 0.9rem;
+        }
+
+        .identity-item strong {
+            display: block;
+            color: var(--black-rich);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.2rem;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
             justify-content: center;
-            padding: 5px;
+            align-items: center;
+        }
+
+        /* Shaped Profile Frame (Hexagon / Scalloped Organic Shape) */
+        .profile-frame {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--lilac-primary), var(--black-rich));
+            padding: 6px;
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            box-shadow: var(--shadow-hover);
+            transition: transform 0.4s ease;
+        }
+
+        .profile-frame:hover {
+            transform: scale(1.02) rotate(1deg);
         }
 
         .profile-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            background-color: var(--lilac-light);
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            background: #fff;
         }
 
-        .hero-details h1 {
-            font-size: 2.3rem;
-            color: var(--black-accent);
-            margin-bottom: 8px;
-        }
-
-        .hero-details .subtitle {
-            font-size: 1.1rem;
-            color: var(--lilac-dark);
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .identity-card {
-            background: var(--pearl-card);
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--lilac-dark);
-            padding: 20px 25px;
-            border-radius: 8px;
-            box-shadow: var(--shadow-subtle);
-            margin-top: 15px;
-        }
-
-        .identity-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .identity-item strong {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 2px;
-        }
-
-        .identity-item span {
-            font-weight: 600;
-            color: var(--black-soft);
-            font-size: 0.95rem;
-        }
-
-        /* Section Formatting */
-        section {
-            padding: 80px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-header h2 {
-            font-size: 2rem;
-            color: var(--black-accent);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 12px;
-        }
-
-        .section-header h2::after {
+        /* Decorative Backdrop Ring */
+        .hero-image-wrapper::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            width: 320px;
+            height: 320px;
+            border: 2px dashed var(--lilac-primary);
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            z-index: -1;
+            animation: spin 30s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- Main Container --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5% 6rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--black-rich);
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .title-divider {
             width: 60px;
             height: 3px;
-            background: var(--black-accent);
+            background: var(--lilac-dark);
+            margin: 1rem auto 0;
+            border-radius: 2px;
         }
 
-        .section-header p {
-            color: var(--text-muted);
-            margin-top: 10px;
-            font-size: 1.05rem;
-        }
-
-        /* Material Highlight Banner */
-        .topic-banner {
-            background: var(--black-accent);
-            color: #FFFFFF;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: var(--shadow-subtle);
+        /* --- Subject Focus Banner --- */
+        .subject-card {
+            background: linear-gradient(135deg, var(--black-rich), var(--black-soft));
+            color: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 5rem;
             position: relative;
             overflow: hidden;
+            border-left: 6px solid var(--lilac-primary);
+            box-shadow: var(--shadow-soft);
         }
 
-        .topic-banner::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 300px;
-            height: 300px;
-            background: rgba(200, 162, 200, 0.15);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .topic-text h3 {
-            color: var(--lilac-primary);
-            font-size: 1.4rem;
-            margin-bottom: 8px;
-        }
-
-        .topic-text p {
+        .subject-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
             color: var(--lilac-light);
-            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .subject-card p {
+            color: #d1d1d1;
+            font-size: 1rem;
             max-width: 800px;
         }
 
-        .topic-badge {
-            background: var(--lilac-dark);
-            color: white;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            white-space: nowrap;
+        /* --- Grid Section for Products --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
         }
 
-        /* Card Designs */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+        @media (max-width: 600px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
         }
 
         .card {
             background: var(--pearl-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: var(--shadow-subtle);
+            border: 1px solid var(--pearl-border);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-soft);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
         .card:hover {
@@ -315,380 +290,278 @@
             border-color: var(--lilac-primary);
         }
 
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
         .card-icon {
-            width: 55px;
-            height: 55px;
-            background: var(--lilac-soft);
-            color: var(--black-accent);
-            border-radius: 10px;
+            width: 50px;
+            height: 50px;
+            background: var(--lilac-light);
+            color: var(--lilac-dark);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            border: 1px solid var(--border-color);
+            font-size: 1.3rem;
         }
 
-        .card h3 {
-            font-size: 1.25rem;
-            color: var(--black-accent);
-            margin-bottom: 12px;
+        .card-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: var(--black-rich);
         }
 
-        .card p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .btn-action {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 20px;
-            background: var(--black-accent);
-            color: #FFFFFF;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: background 0.3s ease;
-            width: fit-content;
-        }
-
-        .btn-action:hover {
-            background: var(--lilac-dark);
-        }
-
-        /* Video Section Custom Layout */
-        .video-container {
-            background: var(--pearl-card);
-            border: 1px solid var(--border-color);
+        /* Embedded Frame Container for Google Drive */
+        .iframe-container {
+            width: 100%;
+            height: 380px;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: var(--shadow-subtle);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
+            background: var(--pearl-bg);
+            border: 1px solid var(--pearl-border);
+            margin-bottom: 1.5rem;
         }
 
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            background: #000;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .iframe-container iframe {
             width: 100%;
             height: 100%;
-            border: 0;
+            border: none;
         }
 
-        .video-description {
-            padding: 40px;
+        .card-actions {
+            margin-top: auto;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: linear-gradient(180deg, var(--pearl-card) 0%, var(--lilac-soft) 100%);
+            justify-content: flex-end;
         }
 
-        .video-description h3 {
-            font-size: 1.5rem;
-            color: var(--black-accent);
-            margin-bottom: 15px;
-        }
-
-        /* Analysis Accordion/Tabs Styling */
-        .analysis-block {
-            background: var(--pearl-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 25px;
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .analysis-header {
-            display: flex;
+        .btn-preview {
+            display: inline-flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--lilac-soft);
-            padding-bottom: 10px;
+            gap: 0.6rem;
+            padding: 0.7rem 1.4rem;
+            background: var(--black-rich);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: background 0.3s ease;
         }
 
-        .analysis-number {
+        .btn-preview:hover {
             background: var(--lilac-dark);
-            color: #FFFFFF;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
+        }
+
+        /* --- Analysis Section --- */
+        .analysis-section {
+            background: var(--pearl-card);
+            border-radius: 20px;
+            border: 1px solid var(--pearl-border);
+            padding: 3rem 2.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .analysis-item {
+            background: var(--pearl-bg);
+            padding: 1.8rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--lilac-dark);
+        }
+
+        .analysis-item h4 {
+            font-size: 1.1rem;
+            color: var(--black-rich);
+            margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.9rem;
+            gap: 0.6rem;
         }
 
-        .analysis-header h3 {
-            font-size: 1.2rem;
-            color: var(--black-accent);
+        .analysis-item h4 i {
+            color: var(--lilac-dark);
         }
 
-        .analysis-content {
-            color: var(--black-soft);
-            font-size: 0.95rem;
+        .analysis-item p {
+            font-size: 0.93rem;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
-        .analysis-content ul {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-
-        .analysis-content li {
-            margin-bottom: 8px;
-        }
-
-        /* Footer */
+        /* --- Footer --- */
         footer {
-            background: var(--black-accent);
-            color: var(--lilac-light);
-            padding: 40px 0;
+            background: var(--black-rich);
+            color: white;
             text-align: center;
-            font-size: 0.9rem;
-            border-top: 3px solid var(--lilac-primary);
+            padding: 3rem 5%;
+            border-top: 1px solid #222;
         }
 
         footer p {
-            opacity: 0.8;
+            color: #888;
+            font-size: 0.9rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .identity-card {
-                text-align: left;
-            }
-            .video-container {
-                grid-template-columns: 1fr;
-            }
-            .topic-banner {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
+        footer .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 0.5rem;
         }
 
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none; /* Can be expanded for mobile menu */
-            }
-            .hero-details h1 {
-                font-size: 1.8rem;
-            }
+        footer .footer-logo span {
+            color: var(--lilac-primary);
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="container nav-container">
-            <a href="#" class="brand-logo">E-PORTOFOLIO <span>.</span></a>
-            <ul class="nav-links">
+    <header>
+        <div class="logo">E-Portofolio <span>.</span></div>
+        <nav>
+            <ul>
                 <li><a href="#profil">Profil</a></li>
-                <li><a href="#perencanaan">Perencanaan Pembelajaran</a></li>
-                <li><a href="#video">Video Pelaksanaan</a></li>
+                <li><a href="#materi">Materi</a></li>
+                <li><a href="#perencanaan">Perencanaan</a></li>
+                <li><a href="#praktik">Praktik Video</a></li>
                 <li><a href="#analisis">Analisis Mendalam</a></li>
             </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="profil">
+        <div class="hero-content">
+            <span class="badge"><i class="fa-solid fa-graduation-cap"></i> Praktik Mengajar Mandiri Siklus 1</span>
+            <h1>E-Portofolio Pembelajaran</h1>
+            <h2>Refleksi & Dokumen Kinerja Praktik Pembelajaran</h2>
+            <p>Portofolio digital ini menyajikan rancangan perencanaan pembelajaran terbaik dan rekaman video pelaksanaan praktik mengajar mandiri secara akuntabel, terstruktur, serta dilengkapi analisis mendalam.</p>
+            
+            <div class="identity-grid">
+                <div class="identity-item">
+                    <strong>Nama Lengkap</strong>
+                    Ni Luh Erna Budiartini
+                </div>
+                <div class="identity-item">
+                    <strong>Program</strong>
+                    Pendidikan Profesi Guru (PPG)
+                </div>
+                <div class="identity-item">
+                    <strong>Bidang Studi</strong>
+                    Informatika
+                </div>
+                <div class="identity-item">
+                    <strong>Instansi Praktik</strong>
+                    SMP Negeri 6 Singaraja
+                </div>
+            </div>
         </div>
-    </nav>
 
-    <section id="profil">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="profile-wrapper">
-                    <div class="profile-frame">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" alt="Foto Profil Pengajar" class="profile-img">
-                    </div>
-                </div>
-
-                <div class="hero-details">
-                    <div class="subtitle">Praktik Mengajar Mandiri Siklus 1</div>
-                    <h1>Ni Luh Erna Budiartini, S.Pd.</h1>
-                    <p style="color: var(--text-muted); font-size: 1rem;">
-                        Portofolio digital ini disusun sebagai bentuk dokumentasi, asesmen, dan refleksi komprehensif atas pelaksanaan Praktik Pengalaman Lapangan (PPL) Siklus 1.
-                    </p>
-
-                    <div class="identity-card">
-                        <div class="identity-grid">
-                            <div class="identity-item">
-                                <strong>NIM / NPG</strong>
-                                <span>2411001234</span>
-                            </div>
-                            <div class="identity-item">
-                                <strong>Program Studi</strong>
-                                <span>Pendidikan Informatika / PPG</span>
-                            </div>
-                            <div class="identity-item">
-                                <strong>Sekolah Latihan</strong>
-                                <span>SMP Negeri 6 Singaraja</span>
-                            </div>
-                            <div class="identity-item">
-                                <strong>Kelas / Fase</strong>
-                                <span>Kelas VIII / Fase D</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="hero-image-wrapper">
+            <div class="profile-frame">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop" alt="Foto Profil Ni Luh Erna Budiartini" class="profile-img">
             </div>
         </div>
     </section>
 
-    <main class="container">
+    <div class="container">
+        <section id="materi" class="subject-card">
+            <h3>Fokus Materi Pembelajaran</h3>
+            <p><i class="fa-solid fa-shield-halved" style="color: var(--lilac-primary); margin-right: 8px;"></i> <strong>Kredibilitas Sumber Informasi & Media Pers Digital</strong></p>
+            <p style="margin-top: 0.5rem; font-size: 0.92rem;">Fokus pembelajaran ini bertujuan melatih peserta didik untuk berpikir kritis dalam mengevaluasi keabsahan berita, membedakan fakta dan opini, serta memahami etika konsumsi media pers di era digital.</p>
+        </section>
 
-        <div class="topic-banner" style="margin-top: 50px;">
-            <div class="topic-text">
-                <h3><i class="fa-solid fa-newspaper" style="margin-right: 10px;"></i> Fokus Materi Pembelajaran</h3>
-                <p><strong>Kredibilitas Sumber Informasi dan Media Pers Digital:</strong> Mengembangkan literasi digital peserta didik dalam menganalisis keabsahan informasi, membedakan fakta vs hoaks, serta memahami etika konsumsi berita di media pers digital.</p>
-            </div>
-            <div class="topic-badge">INFORMATIKA / LITERASI DIGITAL</div>
+        <div class="section-title">
+            <h2>Produk Utama Siklus 1</h2>
+            <p>Dokumen Perencanaan Pembelajaran dan Video Praktik Mengajar</p>
+            <div class="title-divider"></div>
         </div>
 
-        <section id="perencanaan">
-            <div class="section-header">
-                <h2>Perencanaan Pembelajaran Lengkap</h2>
-                <p>Produk rancangan pembelajaran terbaik yang diterapkan pada Praktik Mengajar Mandiri Siklus 1</p>
+        <div class="grid-2">
+            <section id="perencanaan" class="card">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fa-solid fa-file-lines"></i></div>
+                    <div>
+                        <h3>Rancangan Perencanaan Pembelajaran</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Modul Ajar / RPP Lengkap Siklus 1</p>
+                    </div>
+                </div>
+                <div class="iframe-container">
+                    <iframe src="https://drive.google.com/file/d/1EXAMPLERPPFILEID/preview" title="Preview Perencanaan Pembelajaran" allow="autoplay"></iframe>
+                </div>
+                <div class="card-actions">
+                    <a href="https://drive.google.com/file/d/1EXAMPLERPPFILEID/view?usp=sharing" target="_blank" class="btn-preview">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Full Preview (Drive)
+                    </a>
+                </div>
+            </section>
+
+            <section id="praktik" class="card">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fa-solid fa-circle-play"></i></div>
+                    <div>
+                        <h3>Video Pelaksanaan Praktik Mengajar</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Rekaman Praktik Pembelajaran Mandiri</p>
+                    </div>
+                </div>
+                <div class="iframe-container">
+                    <iframe src="https://drive.google.com/file/d/1EXAMPLEVIDEOFILEID/preview" title="Preview Video Praktik Mengajar" allow="autoplay"></iframe>
+                </div>
+                <div class="card-actions">
+                    <a href="https://drive.google.com/file/d/1EXAMPLEVIDEOFILEID/view?usp=sharing" target="_blank" class="btn-preview">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Full Video (Drive)
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <section id="analisis" class="analysis-section">
+            <div class="section-title" style="margin-bottom: 2rem;">
+                <h2>Analisis Mendalam Komponen Pembelajaran</h2>
+                <p>Refleksi Kritis dan Evaluasi Komprehensif Siklus 1</p>
+                <div class="title-divider"></div>
             </div>
 
-            <div class="card-grid">
-                <div class="card">
-                    <div>
-                        <div class="card-icon"><i class="fa-solid fa-file-invoice"></i></div>
-                        <h3>Modul Ajar / RPP</h3>
-                        <p>Rancangan pembelajaran berbasis Problem-Based Learning (PBL) berorientasi HOTS yang terintegrasi dengan materi Kredibilitas Sumber Informasi.</p>
-                    </div>
-                    <a href="#" class="btn-action"><i class="fa-solid fa-download"></i> Unduh Modul Ajar</a>
+            <div class="analysis-grid">
+                <div class="analysis-item">
+                    <h4><i class="fa-solid fa-chart-line"></i> Analisis Perencanaan</h4>
+                    <p>Penyusunan modul ajar materi "Kredibilitas Sumber Informasi" mengintegrasikan model Problem-Based Learning (PBL). Desain alur pembelajaran terbukti efektif mendorong peserta didik untuk secara aktif menelaah studi kasus berita palsu (hoax) vs pers digital kredibel.</p>
                 </div>
 
-                <div class="card">
-                    <div>
-                        <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
-                        <h3>Bahan Ajar & Media</h3>
-                        <p>Materi presentasi interaktif Canva dan modul bacaan digital tentang parameter evaluasi media pers digital dan verifikasi berita.</p>
-                    </div>
-                    <a href="#" class="btn-action"><i class="fa-solid fa-square-arrow-up-right"></i> Akses Bahan Ajar</a>
+                <div class="analysis-item">
+                    <h4><i class="fa-solid fa-person-chalkboard"></i> Analisis Pelaksanaan</h4>
+                    <p>Pelaksanaan praktik berjalan sesuai sintaks PBL. Pengelolaan kelas dan keterlibatan peserta didik mencapai tingkat responsif tinggi saat sesi diskusi kelompok mengevaluasi artikel berita digital secara aktual.</p>
                 </div>
 
-                <div class="card">
-                    <div>
-                        <div class="card-icon"><i class="fa-solid fa-pen-to-square"></i></div>
-                        <h3>LKPD Berbasis Kasus</h3>
-                        <p>Lembar Kerja Peserta Didik yang memuat studi kasus nyata analisis klaim berita dari berbagai portal pers digital.</p>
-                    </div>
-                    <a href="#" class="btn-action"><i class="fa-solid fa-download"></i> Unduh LKPD</a>
+                <div class="analysis-item">
+                    <h4><i class="fa-solid fa-bullseye"></i> Analisis Asesmen & Hasil</h4>
+                    <p>Asesmen diagnostik, formatif (rubrik diskusi), dan sumatif terintegrasi dengan baik. Hasil asesmen menunjukkan peningkatan signifikan pada kemampuan literasi kritis peserta didik dalam membedakan media pers resmi dan blog tidak terverifikasi.</p>
                 </div>
 
-                <div class="card">
-                    <div>
-                        <div class="card-icon"><i class="fa-solid fa-chart-check"></i></div>
-                        <h3>Instrumen Asesmen</h3>
-                        <p>Rubrik penilaian diagnostik, formatif (proses diskusi), dan sumatif disertai asesmen diagnostik gaya belajar.</p>
-                    </div>
-                    <a href="#" class="btn-action"><i class="fa-solid fa-download"></i> Unduh Instrumen</a>
+                <div class="analysis-item">
+                    <h4><i class="fa-solid fa-arrows-rotate"></i> Tindak Lanjut & Refleksi</h4>
+                    <p>Ditemukan tantangan minor pada alokasi waktu sesi presentasi. Tindak lanjut untuk siklus berikutnya adalah menyederhanakan lembar kerja siswa agar proses verifikasi fakta dapat diselesaikan lebih sistematis.</p>
                 </div>
             </div>
         </section>
-
-        <section id="video">
-            <div class="section-header">
-                <h2>Video Pelaksanaan Praktik</h2>
-                <p>Dokumentasi video pelaksanaan mengajar mandiri berdasarkan perencanaan yang telah dirancang</p>
-            </div>
-
-            <div class="video-container">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Praktik Mengajar Mandiri Siklus 1" allowfullscreen></iframe>
-                </div>
-                <div class="video-description">
-                    <span style="color: var(--lilac-dark); font-weight: bold; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 8px;">DOKUMENTASI PEMBELAJARAN</span>
-                    <h3>Praktik Mengajar Mandiri Siklus 1</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
-                        Video ini menampilkan rekaman proses pembelajaran penuh dari kegiatan pendahuluan, inti (orientasi masalah kredibilitas berita, diskusi kelompok, verifikasi sumber pers digital), hingga penutup dan refleksi bersama siswa.
-                    </p>
-                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                        <span style="background: var(--lilac-light); color: var(--black-accent); padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;"><i class="fa-regular fa-clock"></i> Durasi: 15 Menit (Edited)</span>
-                        <span style="background: var(--lilac-light); color: var(--black-accent); padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600;"><i class="fa-solid fa-users"></i> Model: PBL</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="analisis">
-            <div class="section-header">
-                <h2>Analisis Mendalam Komponen</h2>
-                <p>Evaluasi dan refleksi analitis terhadap perancangan dan pelaksanaan praktik mengajar</p>
-            </div>
-
-            <div class="analysis-block">
-                <div class="analysis-header">
-                    <div class="analysis-number">1</div>
-                    <h3>Analisis Ketercapaian Rancangan Pembelajaran</h3>
-                </div>
-                <div class="analysis-content">
-                    <p>Penerapan model <em>Problem-Based Learning</em> (PBL) pada materi Kredibilitas Sumber Informasi dan Media Pers Digital terbukti meningkatkan kognitif dan daya kritis peserta didik. Kesesuaian antara Capaian Pembelajaran (CP) dan Tujuan Pembelajaran (TP) tercapai secara optimal melalui pemilihan studi kasus yang konkrit dari berita digital terkini.</p>
-                    <ul>
-                        <li><strong>Kelebihan:</strong> Penggunaan LKPD interaktif membantu siswa mengidentifikasi domain situs berita resmi dan mengecek rekam jejak dewan pers secara terstruktur.</li>
-                        <li><strong>Tantangan:</strong> Beberapa siswa membutuhkan bimbingan ekstra dalam membedakan antara artikel opini editorial dan berita faktual.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="analysis-block">
-                <div class="analysis-header">
-                    <div class="analysis-number">2</div>
-                    <h3>Analisis Pelaksanaan & Dinamika Kelas</h3>
-                </div>
-                <div class="analysis-content">
-                    <p>Berdasarkan rekaman video pembelajaran Siklus 1, interaksi guru dan murid berjalan komunikatif dua arah. Pengelolaan kelas menunjukkan transisi yang mulus antar-sintaks PBL:</p>
-                    <ul>
-                        <li><strong>Orientasi Masalah:</strong> Penyajian tayangan berita hoaks vs berita valid memicu rasa ingin tahu awal peserta didik secara efektif.</li>
-                        <li><strong>Diskusi Kelompok:</strong> Pengelompokan heterogen memungkinkan pembelajaran sebaya (peer learning) berlangsung responsif saat memverifikasi kredibilitas sumber berita.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="analysis-block">
-                <div class="analysis-header">
-                    <div class="analysis-number">3</div>
-                    <h3>Rencana Tindak Lanjut (RTL) & Perbaikan</h3>
-                </div>
-                <div class="analysis-content">
-                    <p>Untuk menyempurnakan praktik mengajar pada Siklus berikutnya, beberapa rekomendasi dan penyesuaian strategi disiapkan:</p>
-                    <ul>
-                        <li>Mengintegrasikan alat verifikasi fakta digital (seperti Fact-Checking tools) secara langsung dalam sesi praktikum komputer.</li>
-                        <li>Optimasi alokasi waktu pada tahap presentasi hasil diskusi agar setiap kelompok memperoleh umpan balik yang lebih mendalam.</li>
-                    </ul>
-                </div>
-            </div>
-
-        </section>
-
-    </main>
+    </div>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Ni Luh Erna Budiartini, S.Pd. All Rights Reserved.</p>
-            <p style="margin-top: 5px; font-size: 0.8rem; opacity: 0.6;">Disusun untuk Memenuhi Tugas Portofolio Praktik Pengalaman Lapangan (PPL)</p>
-        </div>
+        <div class="footer-logo">E-Portofolio <span>.</span> Siklus 1</div>
+        <p>&copy; 2026 Ni Luh Erna Budiartini. Dikembangkan untuk Praktik Mengajar Mandiri PPG.</p>
     </footer>
 
 </body>
 </html>
+
+
+print("File index.html successfully generated.")
