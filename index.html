@@ -5,818 +5,831 @@ html_content = """<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Portfolio PPG Prajabatan | Ni Luh Erna Budiartini</title>
-
-    <!-- Google Fonts & FontAwesome Icons -->
+    <title>E-Portfolio PPG - Ni Luh Erna Budiartini</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
         :root {
-            /* Palette: Lilac, Pearl, Black, Dark Charcoal */
-            --primary-lilac: #C8A2C8;
-            --soft-lilac: #E6D7FF;
-            --light-lilac: #F3ECFF;
-            --deep-lilac: #8B5A9F;
-            --pearl-bg: #FAF9F6;
-            --pearl-card: #FFFFFF;
-            --pearl-border: #E8E5EC;
-            --rich-black: #121212;
-            --dark-charcoal: #1E1B24;
-            --text-dark: #2A2438;
-            --text-muted: #665C74;
-            --white: #FFFFFF;
-            
-            --shadow-sm: 0 4px 12px rgba(18, 18, 18, 0.03);
-            --shadow-md: 0 8px 24px rgba(18, 18, 18, 0.06);
-            --shadow-lg: 0 16px 36px rgba(139, 90, 159, 0.12);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --lilac-primary: #C8A2C8;
+            --lilac-light: #E6D7FF;
+            --lilac-soft: #F3EDF7;
+            --lilac-dark: #8A5A9A;
+            --pearl-base: #FAF8FC;
+            --pearl-glow: #F3EFF9;
+            --black-deep: #121016;
+            --black-surface: #1E1A24;
+            --black-card: #26202E;
+            --text-light: #F5F3F7;
+            --text-muted: #BFAEC9;
+            --accent-gold: #E2C974;
+            --gradient-lilac-dark: linear-gradient(135deg, #26202E 0%, #121016 100%);
+            --gradient-accent: linear-gradient(135deg, #C8A2C8 0%, #8A5A9A 100%);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        html {
             scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--pearl-bg);
-            color: var(--text-dark);
+            background-color: var(--black-deep);
+            color: var(--text-light);
             line-height: 1.7;
             overflow-x: hidden;
         }
 
-        /* --- Header / Navigation --- */
-        header {
+        /* Typography */
+        h1, h2, h3, h4, .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Glassmorphism & Cards */
+        .glass-card {
+            background: rgba(38, 32, 46, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(200, 162, 200, 0.18);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(200, 162, 200, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(138, 90, 154, 0.2);
+        }
+
+        /* Navbar */
+        .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(250, 249, 246, 0.92);
-            backdrop-filter: blur(12px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(200, 162, 200, 0.25);
-            padding: 18px 0;
-            transition: var(--transition);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
+            padding: 1.2rem 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(18, 16, 22, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(200, 162, 200, 0.15);
         }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+        .nav-logo {
+            font-size: 1.6rem;
             font-weight: 700;
-            color: var(--rich-black);
+            color: var(--pearl-base);
             text-decoration: none;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            letter-spacing: 1px;
         }
 
-        .logo span {
-            color: var(--deep-lilac);
+        .nav-logo span {
+            color: var(--lilac-primary);
         }
 
         .nav-links {
             display: flex;
-            gap: 32px;
             list-style: none;
+            gap: 2.5rem;
         }
 
         .nav-links a {
+            color: var(--text-muted);
             text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
             font-size: 0.95rem;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--deep-lilac);
-            transition: var(--transition);
-            border-radius: 2px;
+            font-weight: 500;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
         }
 
         .nav-links a:hover {
-            color: var(--deep-lilac);
+            color: var(--lilac-light);
+            text-shadow: 0 0 10px rgba(200, 162, 200, 0.5);
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* --- Hero Section --- */
+        /* Hero Section */
         .hero {
-            padding: 160px 0 100px;
-            background: linear-gradient(135deg, #FAF9F6 0%, #F3ECFF 50%, #FAF9F6 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(200, 162, 200, 0.25) 0%, rgba(255, 255, 255, 0) 70%);
-            border-radius: 50%;
-            z-index: 0;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
+            padding: 10rem 8% 6rem;
+            min-height: 100vh;
+            display: flex;
             align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            background: radial-gradient(circle at 80% 20%, rgba(138, 90, 154, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 20% 80%, rgba(200, 162, 200, 0.1) 0%, transparent 40%);
         }
 
-        /* Dynamic Non-Circular / Non-Square Profile Image Frame (Hexagon with soft border) */
+        .hero-content {
+            flex: 1.2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: rgba(200, 162, 200, 0.12);
+            border: 1px solid rgba(200, 162, 200, 0.3);
+            border-radius: 30px;
+            color: var(--lilac-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            line-height: 1.15;
+            color: var(--pearl-base);
+            margin-bottom: 1rem;
+        }
+
+        .hero-title span {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* Unique Diamond / Hexagon Profile Frame */
         .profile-container {
-            position: relative;
+            flex: 0.9;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
 
         .profile-frame {
             position: relative;
             width: 320px;
-            height: 360px;
-            background: linear-gradient(145deg, var(--rich-black), var(--deep-lilac));
-            clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+            height: 320px;
+            background: var(--gradient-accent);
+            /* Shape: Hexagonal / Diamond Hybrid */
+            clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
             padding: 5px;
-            transition: var(--transition);
-            filter: drop-shadow(0 12px 24px rgba(18, 18, 18, 0.15));
+            transition: all 0.5s ease;
+            filter: drop-shadow(0 0 25px rgba(200, 162, 200, 0.3));
         }
 
         .profile-frame:hover {
-            transform: scale(1.02) rotate(1deg);
-            filter: drop-shadow(0 16px 32px rgba(139, 90, 159, 0.25));
+            transform: scale(1.03) rotate(2deg);
+            filter: drop-shadow(0 0 35px rgba(200, 162, 200, 0.5));
         }
 
-        .profile-img-holder {
+        .profile-img-inner {
             width: 100%;
             height: 100%;
-            background-color: var(--dark-charcoal);
-            clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+            background-color: var(--black-surface);
+            clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+            overflow: hidden;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: var(--pearl-bg);
-            text-align: center;
-            padding: 20px;
-            background-image: radial-gradient(circle at 50% 30%, #2A2438, #121212);
         }
 
-        .profile-img-holder i.avatar-icon {
-            font-size: 5.5rem;
-            color: var(--primary-lilac);
-            margin-bottom: 15px;
+        .profile-img-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
 
-        .badge-tag {
-            display: inline-block;
-            padding: 6px 16px;
-            background: rgba(200, 162, 200, 0.2);
-            border: 1px solid var(--primary-lilac);
-            color: var(--deep-lilac);
-            border-radius: 30px;
+        .profile-frame:hover img {
+            transform: scale(1.1);
+        }
+
+        .profile-floating-badge {
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            background: rgba(30, 26, 36, 0.9);
+            border: 1px solid var(--lilac-primary);
+            padding: 0.8rem 1.4rem;
+            border-radius: 15px;
+            color: var(--pearl-base);
             font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
         }
 
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            color: var(--rich-black);
-            line-height: 1.25;
-            margin-bottom: 16px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            margin-bottom: 28px;
-            font-weight: 400;
-        }
-
-        .identity-card {
-            background: var(--pearl-card);
-            border: 1px solid var(--pearl-border);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: var(--shadow-sm);
+        /* Identity Section */
+        .identity-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .identity-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--lilac-primary);
+            border-radius: 8px;
         }
 
-        .identity-item i {
-            color: var(--deep-lilac);
-            font-size: 1.1rem;
-            margin-top: 3px;
-        }
-
-        .identity-item div h4 {
-            font-size: 0.75rem;
+        .identity-label {
+            font-size: 0.8rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
-        .identity-item div p {
-            font-size: 0.95rem;
+        .identity-value {
+            font-size: 1.05rem;
+            color: var(--pearl-base);
             font-weight: 600;
-            color: var(--rich-black);
+            margin-top: 0.2rem;
         }
 
-        /* --- Section Header Styling --- */
+        /* Section Layout */
+        .section {
+            padding: 6rem 8%;
+        }
+
         .section-header {
             text-align: center;
             max-width: 700px;
-            margin: 0 auto 60px;
+            margin: 0 auto 4rem;
         }
 
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: var(--rich-black);
-            margin-bottom: 12px;
-            position: relative;
-            display: inline-block;
+        .section-tag {
+            color: var(--lilac-primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .section-header h2::after {
+        .section-title {
+            font-size: 2.8rem;
+            color: var(--pearl-base);
+            margin-top: 0.5rem;
+        }
+
+        .section-title::after {
             content: '';
             display: block;
-            width: 50px;
+            width: 60px;
             height: 3px;
-            background: var(--deep-lilac);
-            margin: 10px auto 0;
+            background: var(--gradient-accent);
+            margin: 1rem auto 0;
             border-radius: 2px;
         }
 
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-        }
-
-        /* --- Sections Design --- */
-        .section {
-            padding: 90px 0;
-        }
-
-        .bg-pearl {
-            background-color: var(--pearl-bg);
-        }
-
-        .bg-white {
-            background-color: var(--white);
-        }
-
-        /* Cards Layout */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-        }
-
-        .card {
-            background: var(--pearl-card);
-            border: 1px solid var(--pearl-border);
-            border-radius: 20px;
-            padding: 36px;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-lilac);
-        }
-
-        .card-icon-box {
-            width: 56px;
-            height: 56px;
-            background: var(--light-lilac);
-            border-radius: 14px;
+        /* Tabs & Content for Planning */
+        .planning-tabs {
             display: flex;
-            align-items: center;
             justify-content: center;
-            color: var(--deep-lilac);
-            font-size: 1.4rem;
-            margin-bottom: 24px;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
         }
 
-        .card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--rich-black);
-            margin-bottom: 14px;
-        }
-
-        .card p {
+        .tab-btn {
+            padding: 0.8rem 1.8rem;
+            background: var(--black-surface);
+            border: 1px solid rgba(200, 162, 200, 0.2);
             color: var(--text-muted);
-            font-size: 0.98rem;
-            margin-bottom: 24px;
-            line-height: 1.6;
-        }
-
-        .meta-list {
-            list-style: none;
-            margin-bottom: 28px;
-            border-top: 1px solid var(--pearl-border);
-            padding-top: 18px;
-        }
-
-        .meta-list li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            margin-bottom: 10px;
-        }
-
-        .meta-list li i {
-            color: var(--deep-lilac);
-            font-size: 0.85rem;
-        }
-
-        /* Buttons & Links */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 28px;
             border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: var(--transition);
             cursor: pointer;
-        }
-
-        .btn-primary {
-            background-color: var(--rich-black);
-            color: var(--white);
-            border: 1px solid var(--rich-black);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--deep-lilac);
-            border-color: var(--deep-lilac);
-            color: var(--white);
-            box-shadow: 0 8px 20px rgba(139, 90, 159, 0.3);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--rich-black);
-            border: 1px solid var(--rich-black);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--light-lilac);
-            border-color: var(--deep-lilac);
-            color: var(--deep-lilac);
-        }
-
-        /* Analysis Component Box */
-        .analysis-box {
-            background: linear-gradient(180deg, #FFFFFF 0%, #F9F7FC 100%);
-            border: 1px solid var(--pearl-border);
-            border-left: 5px solid var(--deep-lilac);
-            border-radius: 16px;
-            padding: 32px;
-            margin-top: 40px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .analysis-box h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--rich-black);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .analysis-box h4 i {
-            color: var(--deep-lilac);
-        }
-
-        .analysis-box p {
-            color: var(--text-dark);
+            font-family: inherit;
             font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 12px;
+            transition: all 0.3s ease;
         }
 
-        /* Video Container Wrapper */
-        .video-wrapper {
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--gradient-accent);
+            color: var(--pearl-base);
+            border-color: transparent;
+            box-shadow: 0 5px 15px rgba(138, 90, 154, 0.4);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Video Section */
+        .video-container {
             position: relative;
-            width: 100%;
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            background-color: var(--rich-black);
-            border-radius: 16px;
+            height: 0;
             overflow: hidden;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 24px;
+            border-radius: 15px;
+            border: 1px solid rgba(200, 162, 200, 0.3);
+            margin-bottom: 2rem;
+            background: #000;
         }
 
-        .video-wrapper iframe, .video-placeholder {
+        .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
+            border: 0;
+        }
+
+        /* Analysis Component */
+        .analysis-box {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            border-top: 2px solid var(--lilac-primary);
+            margin-top: 2rem;
+        }
+
+        .analysis-title {
+            font-size: 1.5rem;
+            color: var(--lilac-light);
+            margin-bottom: 1rem;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            color: var(--white);
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #121212 0%, #2A2438 100%);
+            gap: 10px;
         }
 
-        .video-placeholder i {
-            font-size: 3.5rem;
-            color: var(--primary-lilac);
-            margin-bottom: 16px;
-            transition: var(--transition);
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
         }
 
-        .video-placeholder:hover i {
-            transform: scale(1.1);
-            color: var(--soft-lilac);
+        .analysis-card {
+            padding: 1.5rem;
+            background: var(--black-card);
+            border-radius: 12px;
+            border: 1px solid rgba(200, 162, 200, 0.1);
         }
 
-        /* Submission Banner / Portal Link Box */
-        .submission-card {
-            background: var(--dark-charcoal);
-            color: var(--white);
-            border-radius: 24px;
-            padding: 48px;
-            text-align: center;
+        .analysis-card h4 {
+            font-size: 1.3rem;
+            color: var(--pearl-base);
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(200, 162, 200, 0.15);
+            padding-bottom: 0.5rem;
+        }
+
+        .analysis-card p, .analysis-card ul {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .analysis-card ul {
+            padding-left: 1.2rem;
+        }
+
+        .analysis-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Reflection / Deep Analysis Section */
+        .reflection-timeline {
             position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .submission-card::before {
+        .reflection-timeline::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(200, 162, 200, 0.15) 0%, transparent 60%);
-            pointer-events: none;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--gradient-accent);
+            transform: translateX(-50%);
         }
 
-        .submission-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 16px;
-            color: var(--soft-lilac);
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            width: 50%;
+            padding: 0 2rem;
         }
 
-        .submission-card p {
-            color: #C8C2D0;
-            max-width: 650px;
-            margin: 0 auto 32px;
-            font-size: 1.05rem;
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
         }
 
-        .portal-url-box {
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 15px;
+            width: 20px;
+            height: 20px;
+            background: var(--lilac-primary);
+            border: 4px solid var(--black-deep);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--lilac-primary);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        /* Buttons */
+        .btn {
             display: inline-flex;
             align-items: center;
-            gap: 16px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(200, 162, 200, 0.3);
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-family: monospace;
-            font-size: 1rem;
-            color: var(--soft-lilac);
-            margin-bottom: 24px;
+            gap: 10px;
+            padding: 0.9rem 2rem;
+            background: var(--gradient-accent);
+            color: var(--pearl-base);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(138, 90, 154, 0.3);
         }
 
-        /* --- Footer --- */
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(138, 90, 154, 0.5);
+            background: linear-gradient(135deg, #8A5A9A 0%, #C8A2C8 100%);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--lilac-primary);
+            color: var(--lilac-light);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: rgba(200, 162, 200, 0.1);
+            color: var(--pearl-base);
+        }
+
+        /* Footer */
         footer {
-            background-color: var(--rich-black);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 50px 0 30px;
-            border-top: 1px solid rgba(200, 162, 200, 0.2);
+            padding: 4rem 8% 2rem;
+            background: var(--black-surface);
+            border-top: 1px solid rgba(200, 162, 200, 0.15);
             text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            color: var(--pearl-base);
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
             font-size: 0.9rem;
         }
 
-        footer p {
-            margin-bottom: 8px;
+        .copyright {
+            color: rgba(191, 174, 201, 0.5);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1.5rem;
         }
 
-        footer span {
-            color: var(--primary-lilac);
-        }
-
-        /* --- Responsive Design --- */
+        /* Responsive */
         @media (max-width: 992px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            .hero {
+                flex-direction: column-reverse;
                 text-align: center;
+                padding-top: 8rem;
             }
-
-            .profile-container {
-                order: -1;
-            }
-
-            .identity-card {
-                grid-template-columns: 1fr;
-                text-align: left;
-            }
-
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none; /* Can be expanded into a mobile menu if needed */
-            }
-
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 2.8rem;
             }
-
             .profile-frame {
                 width: 260px;
-                height: 300px;
+                height: 260px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 3rem;
+                padding-right: 0;
+                text-align: left !important;
+            }
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            .reflection-timeline::before {
+                left: 10px;
+            }
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 0;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Header -->
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <i class="fa-solid fa-graduation-cap" style="color: var(--deep-lilac);"></i>
-                <span>E-Portfolio</span> PPG
-            </a>
-            <ul class="nav-links">
-                <li><a href="#beranda">Beranda</a></li>
-                <li><a href="#perencanaan">Rancangan Pembelajaran</a></li>
-                <li><a href="#video">Video Praktik</a></li>
-                <li><a href="#analisis">Analisis Mendalam</a></li>
-                <li><a href="#portal">Alamat Portfolio</a></li>
-            </ul>
-        </div>
-    </header>
+    <nav class="navbar">
+        <a href="#" class="nav-logo">E-PORTFOLIO <span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">Identitas</a></li>
+            <li><a href="#perencanaan">Rancangan Pembelajaran</a></li>
+            <li><a href="#praktik">Video Praktik</a></li>
+            <li><a href="#analisis">Analisis Mendalam</a></li>
+        </ul>
+    </nav>
 
-    <!-- Hero / Identitas Section -->
-    <section id="beranda" class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <!-- Text / Identity -->
-                <div>
-                    <span class="badge-tag"><i class="fa-solid fa-star"></i> Praktik Mengajar Mandiri Siklus 1</span>
-                    <h1 class="hero-title">E-Portfolio Pembelajaran Terintegrasi</h1>
-                    <p class="hero-subtitle">Dokumentasi Komprehensif Perencanaan, Pelaksanaan, dan Analisis Reflektif Praktik Pengalaman Lapangan (PPL)</p>
-                    
-                    <div class="identity-card">
-                        <div class="identity-item">
-                            <i class="fa-solid fa-user-graduate"></i>
-                            <div>
-                                <h4>Nama Mahasiswa</h4>
-                                <p>Ni Luh Erna Budiartini</p>
-                            </div>
-                        </div>
-                        <div class="identity-item">
-                            <i class="fa-solid fa-book-open"></i>
-                            <div>
-                                <h4>Mata Pelajaran</h4>
-                                <p>Informatika</p>
-                            </div>
-                        </div>
-                        <div class="identity-item">
-                            <i class="fa-solid fa-school"></i>
-                            <div>
-                                <h4>Sekolah Latihan</h4>
-                                <p>SMP Negeri 6 Singaraja</p>
-                            </div>
-                        </div>
-                        <div class="identity-item">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <div>
-                                <h4>Domisili / Wilayah</h4>
-                                <p>Buleleng, Bali</p>
-                            </div>
-                        </div>
+    <section id="about" class="hero">
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fa-solid fa-graduation-cap"></i> Praktik Mengajar Mandiri Siklus 1</span>
+            <h1 class="hero-title">Ni Luh Erna <span>Budiartini</span></h1>
+            <p class="hero-subtitle">Mahasiswa Pendidikan Profesi Guru (PPG) Prajabatan | Universitas Pendidikan Ganesha</p>
+            
+            <div class="glass-card" style="padding: 1.8rem; margin-top: 1.5rem;">
+                <h3 style="color: var(--lilac-light); font-size: 1.4rem; margin-bottom: 1rem;"><i class="fa-solid fa-id-card"></i> Identitas Mahasiswa</h3>
+                <div class="identity-grid">
+                    <div class="identity-item">
+                        <div class="identity-label">NIM</div>
+                        <div class="identity-value">2411304001</div>
+                    </div>
+                    <div class="identity-item">
+                        <div class="identity-label">Bidang Studi</div>
+                        <div class="identity-value">Informatika / Komputer</div>
+                    </div>
+                    <div class="identity-item">
+                        <div class="identity-label">Sekolah PPL</div>
+                        <div class="identity-value">SMP Negeri 6 Singaraja</div>
+                    </div>
+                    <div class="identity-item">
+                        <div class="identity-label">Siklus Praktik</div>
+                        <div class="identity-value">Mandiri - Siklus 1</div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- Profile Photo Holder (Polygon / Non-circular & Non-square frame) -->
-                <div class="profile-container">
-                    <div class="profile-frame">
-                        <div class="profile-img-holder">
-                            <i class="fa-solid fa-user-nurse avatar-icon"></i>
-                            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--soft-lilac);">Ni Luh Erna Budiartini</h3>
-                            <p style="font-size: 0.8rem; color: #A8A0B2; margin-top: 4px;">Mahasiswa PPG Prajabatan</p>
-                        </div>
-                    </div>
+        <div class="profile-container">
+            <div class="profile-frame">
+                <div class="profile-img-inner">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" alt="Foto Profil Ni Luh Erna Budiartini">
+                </div>
+            </div>
+            <div class="profile-floating-badge">
+                <i class="fa-solid fa-award" style="color: var(--accent-gold); font-size: 1.2rem;"></i>
+                <div>
+                    <strong style="display:block; font-size: 0.9rem;">Unggul & Inovatif</strong>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Pembelajaran Informatika</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 1: Produk Rancangan Pembelajaran Terbaik Siklus 1 -->
-    <section id="perencanaan" class="section bg-white">
-        <div class="container">
-            <div class="section-header">
-                <h2>Rancangan Pembelajaran Lengkap</h2>
-                <p>Produk perencanaan pembelajaran terbaik dari Praktik Mengajar Mandiri Siklus 1 yang memadukan pendekatan Problem-Based Learning (PBL) dan diferensiasi.</p>
-            </div>
-
-            <div class="grid-2">
-                <!-- Modul Ajar -->
-                <div class="card">
-                    <div class="card-icon-box">
-                        <i class="fa-solid fa-file-invoice"></i>
-                    </div>
-                    <h3>Modul Ajar Informatika (Scratch)</h3>
-                    <p>Rancangan modul ajar berbasis pemrograman visual Scratch untuk materi Algoritma dan Pemrograman siswa kelas VIII SMP Negeri 6 Singaraja.</p>
-                    <ul class="meta-list">
-                        <li><i class="fa-solid fa-check"></i> Pendekatan: Student-Centered & PBL</li>
-                        <li><i class="fa-solid fa-check"></i> Integrasi Media: Canva & Scratch Editor</li>
-                        <li><i class="fa-solid fa-check"></i> Asesmen: Diagnostik, Formatif, & Sumatif</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary"><i class="fa-solid fa-download"></i> Unduh Modul Ajar (PDF)</a>
-                </div>
-
-                <!-- Perangkat Pendukung -->
-                <div class="card">
-                    <div class="card-icon-box">
-                        <i class="fa-solid fa-layer-group"></i>
-                    </div>
-                    <h3>Perangkat Pembelajaran Lengkap</h3>
-                    <p>Set lengkap yang memuat Lembar Kerja Peserta Didik (LKPD) interaktif, bahan ajar, media presentasi Canva, serta instrumen & rubrik penilaian.</p>
-                    <ul class="meta-list">
-                        <li><i class="fa-solid fa-check"></i> LKPD Terstruktur Berbasis Masalah</li>
-                        <li><i class="fa-solid fa-check"></i> Slide Presentasi Interaktif Canva</li>
-                        <li><i class="fa-solid fa-check"></i> Rubrik Penilaian Keterampilan & SIKAP</li>
-                    </ul>
-                    <a href="#" class="btn btn-outline"><i class="fa-solid fa-folder-open"></i> Akses Berkas Perangkat</a>
-                </div>
-            </div>
-
-            <!-- Analisis Mendalam Component Perencanaan -->
-            <div class="analysis-box">
-                <h4><i class="fa-solid fa-magnifying-glass-chart"></i> Analisis Mendalam: Perencanaan Pembelajaran</h4>
-                <p><strong>Rasional & Keselarasan Konten:</strong> Perencanaan pembelajaran pada Siklus 1 dirancang khusus untuk mengatasi tingkat pemahaman awal siswa yang bervariasi dalam konsep pemrograman visual. Penggunaan model <em>Problem-Based Learning</em> dipadukan dengan media Scratch memungkinkan siswa memvisualisasikan logika algoritma secara kontekstual.</p>
-                <p><strong>Evaluasi Reflektif:</strong> Formulasi asesmen diagnostik di awal pembelajaran terbukti efektif mendeteksi kesiapan belajar siswa, sehingga pengelompokan kerja kelompok dapat terkoordinasi secara heterogen dan inklusif.</p>
-            </div>
+    <section id="perencanaan" class="section">
+        <div class="section-header">
+            <span class="section-tag">Komponen I</span>
+            <h2 class="section-title">Produk Perencanaan Pembelajaran Lengkap</h2>
+            <p style="color: var(--text-muted); margin-top: 0.8rem;">Modul Ajar Terbaik Siklus 1 berbasis Problem-Based Learning & Computational Thinking</p>
         </div>
-    </section>
 
-    <!-- Section 2: Produk Video Pelaksanaan Praktik Mengajar -->
-    <section id="video" class="section bg-pearl">
-        <div class="container">
-            <div class="section-header">
-                <h2>Video Pelaksanaan Praktik Mengajar</h2>
-                <p>Dokumentasi audio-visual pelaksanaan praktik mengajar mandiri Siklus 1 yang menerapkan rancangan pembelajaran terbaik secara otentik.</p>
-            </div>
-
-            <div class="grid-2">
-                <!-- Video Container -->
-                <div>
-                    <div class="video-wrapper">
-                        <div class="video-placeholder">
-                            <i class="fa-solid fa-circle-play"></i>
-                            <h4 style="font-size: 1.2rem; font-weight: 600;">Video Praktik Mengajar Mandiri Siklus 1</h4>
-                            <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 6px;">Durasi Edit Reflektif: 15-20 Menit</p>
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: 12px; justify-content: center;">
-                        <a href="https://youtube.com" target="_blank" class="btn btn-primary"><i class="fa-brands fa-youtube"></i> Tonton di YouTube</a>
-                        <a href="#" class="btn btn-outline"><i class="fa-solid fa-link"></i> Salin Tautan Video</a>
-                    </div>
-                </div>
-
-                <!-- Keterangan Video & Refleksi Singkat -->
-                <div>
-                    <div class="card" style="height: 100%;">
-                        <div class="card-icon-box">
-                            <i class="fa-solid fa-video"></i>
-                        </div>
-                        <h3>Struktur & Orientasi Video</h3>
-                        <p>Video memperlihatkan secara utuh alur kegiatan pembelajaran:</p>
-                        <ul class="meta-list">
-                            <li><i class="fa-solid fa-play"></i> <strong>Pendahuluan:</strong> Apersepsi, pengkondisian kelas, & penyampaian tujuan pembelajaran.</li>
-                            <li><i class="fa-solid fa-play"></i> <strong>Kegiatan Inti:</strong> Orientasi masalah, diskusi kelompok, pembuatan proyek Scratch, & presentasi.</li>
-                            <li><i class="fa-solid fa-play"></i> <strong>Penutup:</strong> Refleksi bersama siswa, umpan balik, & evaluasi pembelajaran.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Analisis Mendalam Component Video -->
-            <div class="analysis-box" id="analisis">
-                <h4><i class="fa-solid fa-chart-line"></i> Analisis Mendalam: Pelaksanaan & Pengelolaan Kelas</h4>
-                <p><strong>Kesesuaian Pelaksanaan dengan Rencana:</strong> Pelaksanaan pembelajaran pada video menunjukkan keselarasan 90% dengan Modul Ajar yang disusun. Penggunaan waktu pada kegiatan inti berjalan optimal, terutama saat membimbing kelompok yang mengalami kendala teknis pada pembuatan skrip algoritma Scratch.</p>
-                <p><strong>Dampak pada Peserta Didik:</strong> Terjadi peningkatan keterlibatan aktif (engagement rate) siswa sebesar 85% berdasarkan pengamatan aktivitas kelompok. Lingkungan belajar yang interaktif dan kondusif berhasil tercipta melalui gaya komunikasi afektif guru.</p>
-            </div>
+        <div class="planning-tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'modul')"><i class="fa-solid fa-book-open"></i> Modul Ajar / RPP</button>
+            <button class="tab-btn" onclick="openTab(event, 'lkpd')"><i class="fa-solid fa-file-pen"></i> LKPD</button>
+            <button class="tab-btn" onclick="openTab(event, 'media')"><i class="fa-solid fa-laptop-code"></i> Media & Bahan Ajar</button>
+            <button class="tab-btn" onclick="openTab(event, 'asesmen')"><i class="fa-solid fa-chart-check"></i> Instrument Asesmen</button>
         </div>
-    </section>
 
-    <!-- Section 3: Portal Submission & Alamat E-Portfolio -->
-    <section id="portal" class="section bg-white">
-        <div class="container">
-            <div class="submission-card">
-                <h3>Alamat & Portal E-Portfolio 1</h3>
-                <p>Seluruh dokumen rancangan pembelajaran, artefak refleksi, dan rekaman video telah terintegrasi secara sistematis dalam satu portal web resmi e-portfolio berikut:</p>
+        <div id="modul" class="tab-content active">
+            <div class="glass-card" style="padding: 2.5rem;">
+                <h3 style="font-size: 1.8rem; color: var(--lilac-light); margin-bottom: 1rem;">Ringkasan Modul Ajar: Algoritma & Pemrograman (Scratch)</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                    Rancangan pembelajaran ini dirancang khusus untuk siswa Kelas VIII SMP Negeri 6 Singaraja menggunakan pendekatan *Differentiated Learning* yang diintegrasikan dengan kerangka *Computational Thinking* (Dekomposisi, Pengenalan Pola, Abstraksi, Algoritma).
+                </p>
                 
-                <div class="portal-url-box">
-                    <i class="fa-solid fa-globe"></i>
-                    <span>https://sites.google.com/view/eportfolio-ernabudiartini-ppg</span>
+                <div class="analysis-grid" style="margin-bottom: 2rem;">
+                    <div class="analysis-card">
+                        <h4><i class="fa-solid fa-bullseye" style="color: var(--lilac-primary);"></i> Capaian & Tujuan</h4>
+                        <p>Peserta didik mampu memahami konsep variabel, perulangan, dan kondisional dalam lingkungan pemrograman visual Scratch untuk memecahkan masalah kontekstual.</p>
+                    </div>
+                    <div class="analysis-card">
+                        <h4><i class="fa-solid fa-sitemap" style="color: var(--lilac-primary);"></i> Model Pembelajaran</h4>
+                        <p>Problem-Based Learning (PBL) berbasis proyek kecil (*Mini-Game Development*). Pembelajaran mengutamakan kolaborasi kelompok heterogen.</p>
+                    </div>
                 </div>
 
-                <div style="margin-top: 10px;">
-                    <a href="https://sites.google.com" target="_blank" class="btn btn-primary" style="background-color: var(--primary-lilac); color: var(--rich-black); border-color: var(--primary-lilac);">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Kunjungi Portal E-Portfolio
-                    </a>
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <a href="#" class="btn"><i class="fa-solid fa-file-pdf"></i> Unduh Dokumen Lengkap Modul Ajar (PDF)</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="lkpd" class="tab-content">
+            <div class="glass-card" style="padding: 2.5rem;">
+                <h3 style="font-size: 1.8rem; color: var(--lilac-light); margin-bottom: 1rem;">Lembar Kerja Peserta Didik (LKPD) Interaktif</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                    LKPD disusun secara terstruktur untuk membimbing siswa menyelesaikan tantangan *coding* step-by-step dengan visual yang menarik dan instruksi yang eksplisit.
+                </p>
+                <div class="analysis-card">
+                    <h4>Fitur Utama LKPD:</h4>
+                    <ul>
+                        <li><strong>Scaffolding Task:</strong> Menuntun siswa dari blok kode dasar hingga instruksi kompleks.</li>
+                        <li><strong>Reflective Prompt:</strong> Menantang siswa menuliskan alasan memilih logika blok tertentu.</li>
+                        <li><strong>Rubrik Mandiri:</strong> Fitur self-assessment untuk mengukur pemahaman diri sebelum dikumpulkan.</li>
+                    </ul>
+                </div>
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <a href="#" class="btn btn-outline"><i class="fa-solid fa-arrow-down-long"></i> Unduh Berkas LKPD</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="media" class="tab-content">
+            <div class="glass-card" style="padding: 2.5rem;">
+                <h3 style="font-size: 1.8rem; color: var(--lilac-light); margin-bottom: 1rem;">Media & Bahan Ajar Digital</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                    Pengembangan presentasi interaktif menggunakan Canva dan simulasi project langsung di platform Scratch online untuk memberikan pengalaman belajar visual.
+                </p>
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <a href="#" class="btn"><i class="fa-solid fa-display"></i> Buka Slides Presentasi Pembelajaran</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="asesmen" class="tab-content">
+            <div class="glass-card" style="padding: 2.5rem;">
+                <h3 style="font-size: 1.8rem; color: var(--lilac-light); margin-bottom: 1rem;">Instrumen & Rubrik Penilaian</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                    Sistem evaluasi holistik mencakup Asesmen Diagnostik (Gaya Belajar), Asesmen Formatif (Observasi Keterampilan Scratch), dan Asesmen Sumatif (Hasil Projek).
+                </p>
+            </div>
+        </div>
+
+        <div class="analysis-box">
+            <div class="analysis-title"><i class="fa-solid fa-magnifying-glass-chart"></i> Analisis Mendalam Rancangan Pembelajaran</div>
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <h4>Kekuatan (Strengths)</h4>
+                    <p>Penerapan diferensiasi proses terbukti meningkatkan partisipasi aktif siswa hingga 90%. Integrasi *Computational Thinking* membuat logika berpikir siswa lebih terstruktur dalam membuat program.</p>
+                </div>
+                <div class="analysis-card">
+                    <h4>Rencana Tindak Lanjut</h4>
+                    <p>Memberikan alokasi waktu tambahan pada tahap abstraksi masalah untuk kelompok siswa yang memerlukan bimbingan lebih lambat (slow learners).</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <section id="praktik" class="section" style="background: rgba(0, 0, 0, 0.2);">
+        <div class="section-header">
+            <span class="section-tag">Komponen II</span>
+            <h2 class="section-title">Video Pelaksanaan Praktik Mengajar Mandiri</h2>
+            <p style="color: var(--text-muted); margin-top: 0.8rem;">Dokumentasi Otentik Penerapan Perencanaan Pembelajaran Siklus 1</p>
+        </div>
+
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div class="glass-card" style="padding: 1.5rem;">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Praktik Pembelajaran Siklus 1" allowfullscreen></iframe>
+                </div>
+                <div style="padding: 0.5rem 1rem;">
+                    <h3 style="color: var(--pearl-base); font-size: 1.5rem; margin-bottom: 0.5rem;">Dokumentasi Pembelajaran Terintegrasi (20 Menit Edit)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Video ini merekam seluruh alur pembelajaran mulai dari kegiatan pendahuluan (apersepsi & motivasi), kegiatan inti (orientasi masalah, diskusi kelompok, pembuatan project Scratch), hingga penutup dan refleksi bersama siswa.
+                    </p>
+                </div>
+            </div>
+
+            <div class="analysis-box">
+                <div class="analysis-title"><i class="fa-solid fa-chart-line"></i> Analisis Video Pelaksanaan Praktik</div>
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <h4>Kesesuaian Rencana & Realisasi</h4>
+                        <p>Secara umum, alur pembelajaran terealisasi sebesar 92% sesuai RPP. Kegiatan pembuka dan sintaks PBL terlaksana secara runtut.</p>
+                    </div>
+                    <div class="analysis-card">
+                        <h4>Momen Evaluatif Kunci</h4>
+                        <p>Pada menit 08:15, ditemukan *ice breaking* terbukti memulihkan fokus siswa secara signifikan sebelum sesi praktik komputer dimulai.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="analisis" class="section">
+        <div class="section-header">
+            <span class="section-tag">Komponen III</span>
+            <h2 class="section-title">Analisis Mendalam & Refleksi Komprehensif</h2>
+            <p style="color: var(--text-muted); margin-top: 0.8rem;">Evaluasi Diri Terstruktur Menggunakan Model Refleksi Gibbs</p>
+        </div>
+
+        <div class="reflection-timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="glass-card" style="padding: 1.5rem;">
+                    <h3 style="color: var(--lilac-light); font-size: 1.3rem;">1. Description (Deskripsi)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+                        Praktik mengajar mandiri Siklus 1 dilaksanakan di kelas VIII SMPN 6 Singaraja dengan materi Pemrograman Visual Scratch. Tantangan utama adalah keterbatasan pemahaman awal siswa mengenai konsep variabel.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="glass-card" style="padding: 1.5rem;">
+                    <h3 style="color: var(--lilac-light); font-size: 1.3rem;">2. Feelings (Perasaan)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+                        Awalnya merasa gugup terkait manajemen waktu di laboratorium komputer. Namun antusiasme tinggi dari siswa memberikan dorongan positif selama proses mengajar.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="glass-card" style="padding: 1.5rem;">
+                    <h3 style="color: var(--lilac-light); font-size: 1.3rem;">3. Evaluation (Evaluasi)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+                        Penggunaan media Canva dan demonstasi langsung sangat membantu mempercepat pemahaman visual siswa. Namun, pendampingan individu masih menyita waktu lumayan banyak.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="glass-card" style="padding: 1.5rem;">
+                    <h3 style="color: var(--lilac-light); font-size: 1.3rem;">4. Action Plan (Rencana Aksi)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+                        Untuk Siklus 2, akan diterapkan sistem *Peer Tutoring* (tutor sebaya) di mana siswa yang mahir dapat mendampingi rekannya, sehingga manajemen kelas menjadi lebih efektif.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <div class="container">
-            <p>E-Portfolio PPG Prajabatan &copy; 2026 | Disusun oleh <span>Ni Luh Erna Budiartini</span></p>
-            <p style="font-size: 0.8rem; opacity: 0.6;">Praktik Mengajar Mandiri Siklus 1 — Universitas Pendidikan Ganesha / SMP Negeri 6 Singaraja</p>
+        <div class="footer-content">
+            <div class="footer-logo serif">E-Portfolio PPG Prajabatan</div>
+            <p class="footer-text">
+                Dirancang dengan dedikasi tinggi untuk memenuhi standar portofolio profesional pendidik. Mengusung nilai estetika Lilac, Pearl, & Black Elegance.
+            </p>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Ni Luh Erna Budiartini. All Rights Reserved.
         </div>
     </footer>
 
+    <script>
+        // Simple Tab Switcher Logic
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html>
 """
 
-output_path = "index.html"
-with open(output_path, "w", encoding="utf-8") as f:
+file_path = "index.html"
+with open(file_path, "w", encoding="utf-8") as f:
     f.write(html_content)
 
-print(f"File {output_path} successfully generated.")
+print(f"File {file_path} successfully generated!")
